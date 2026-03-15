@@ -1,0 +1,15 @@
+/* Cross-document View Transitions - browser handles navigation automatically */
+@view-transition {
+  navigation: auto;
+}
+
+/* Match site background to prevent white flash during transition */
+::view-transition-group(root) {
+  background: var(--color-bg, #faf8f5);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  @view-transition {
+    navigation: none;
+  }
+}

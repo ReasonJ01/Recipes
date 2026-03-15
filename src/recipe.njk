@@ -1,0 +1,101 @@
+---
+layout: layout.njk
+pagination:
+  data: collections.recipes
+  size: 1
+  alias: recipe
+permalink: "/recipes/{{ recipe.data.title | slug }}/"
+scripts:
+  - /js/ingredients.js
+  - /js/scroll-reveal.js
+  - /js/timer.js
+---
+
+<a href="/" class="recipe-back" aria-label="Back to catalogue">
+  <svg class="recipe-back__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
+    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
+    <path d="M8 7h8"/>
+  </svg>
+</a>
+
+{% set sections = recipe.inputPath | parseRecipeSections %}
+{% set ingredients = sections.Ingredients | ingredientsToList %}
+{% set instructions = sections.Instructions | instructionsToList %}
+
+<div class="recipe-hero">
+  {% if recipe.data.image %}
+  <div class="recipe-hero__image-wrap">
+    <img
+      src="/images/{{ recipe.data.image }}"
+      alt="{{ recipe.data.title }}"
+      class="recipe-hero__image"
+    >
+  </div>
+  {% endif %}
+  <header class="recipe-header">
+    <h1 class="recipe-title">{{ recipe.data.title }}</h1>
+    {% if recipe.data.prep_time or recipe.data.cook_time or recipe.data.servings or recipe.data.categories %}
+    <div class="recipe-meta">
+      {% if recipe.data.prep_time %}<span class="recipe-meta__badge">{{ recipe.data.prep_time }} prep</span>{% endif %}
+      {% if recipe.data.cook_time %}<span class="recipe-meta__badge">{{ recipe.data.cook_time }} cook</span>{% endif %}
+      {% if recipe.data.servings %}<span class="recipe-meta__badge">{{ recipe.data.servings }} servings</span>{% endif %}
+      {% if recipe.data.categories and recipe.data.categories.length %}
+      {% for cat in recipe.data.categories %}
+      <span class="recipe-meta__badge">{{ cat }}</span>
+      {% endfor %}
+      {% endif %}
+    </div>
+    {% endif %}
+    {% if recipe.data.source %}
+    <p class="recipe-source">
+      Adapted from {% if recipe.data.source_url %}<a href="{{ recipe.data.source_url }}" target="_blank" rel="noopener noreferrer">{{ recipe.data.source }}</a>{% else %}{{ recipe.data.source }}{% endif %}
+    </p>
+    {% endif %}
+  </header>
+</div>
+
+<div class="recipe-body">
+  {% if ingredients.length %}
+  <section class="recipe-section recipe-section--ingredients">
+    <h2 class="recipe-section__title">Ingredients</h2>
+    <ul class="recipe-ingredients">
+      {% for item in ingredients %}
+      <li>
+        <input type="checkbox" class="recipe-ingredients__checkbox" id="ing-{{ loop.index }}">
+        <span class="recipe-ingredients__text" data-checkbox-target="ing-{{ loop.index }}">{{ item }}</span>
+      </li>
+      {% endfor %}
+    </ul>
+  </section>
+  {% endif %}
+
+  {% if instructions.length %}
+  <section class="recipe-section recipe-section--instructions">
+    <h2 class="recipe-section__title">Instructions</h2>
+    <ol class="recipe-instructions">
+      {% for item in instructions %}
+      <li {% if item | extractMinutes %}data-timer-minutes="{{ item | extractMinutes }}"{% endif %}>
+        <span class="recipe-instructions__number"></span>
+        <span class="recipe-instructions__text">{{ item }}</span>
+        {% if item | extractMinutes %}
+        <button type="button" class="recipe-timer" data-minutes="{{ item | extractMinutes }}" aria-label="Start {{ item | extractMinutes }} minute timer">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span class="recipe-timer__label">{{ item | extractMinutes }} min</span>
+        </button>
+        {% endif %}
+      </li>
+      {% endfor %}
+    </ol>
+  </section>
+  {% endif %}
+
+  {% if sections.Notes %}
+  <section class="recipe-section recipe-section--notes">
+    <h2 class="recipe-section__title">Notes</h2>
+    <div class="recipe-notes">
+      {{ sections.Notes | markdown | safe }}
+    </div>
+  </section>
+  {% endif %}
+</div>

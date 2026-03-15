@@ -1,0 +1,18 @@
+/* Layout */
+main.container {
+  padding-top: var(--space-8);
+}
+
+.container {
+  width: 100%;
+  max-width: 72rem;
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+@media (min-width: 48rem) {
+  .container {
+    padding: 0 var(--space-8);
+  }
+}
+

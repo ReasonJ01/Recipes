@@ -1,0 +1,12 @@
+---
+layout: layout.njk
+title: Recipe Catalogue
+---
+
+<h2 class="page-title" style="font-family: var(--font-display); font-size: var(--text-2xl); margin-bottom: var(--space-8);">All Recipes</h2>
+
+<div class="catalogue">
+  {% for recipe in collections.recipes %}
+  {% include "recipe-card.njk" %}
+  {% endfor %}
+</div>

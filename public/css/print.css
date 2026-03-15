@@ -1,0 +1,32 @@
+@media print {
+  .recipe-back,
+  .recipe-ingredients__checkbox,
+  .recipe-meta__badge,
+  script {
+    display: none !important;
+  }
+
+  body {
+    background: white;
+    color: #000;
+  }
+
+  .recipe-hero__image-wrap {
+    max-height: 200px;
+    box-shadow: none;
+  }
+
+  .recipe-ingredients__text.checked {
+    text-decoration: line-through;
+    color: #666;
+  }
+
+  .recipe-card:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  a {
+    color: inherit;
+  }
+}

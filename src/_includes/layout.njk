@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#faf8f5">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <title>{% if title %}{{ title }}{% elif recipe %}{{ recipe.data.title }} — Recipe Catalogue{% else %}Recipe Catalogue{% endif %}</title>
+  <link rel="icon" type="image/png" sizes="32x32" href="/icons/icon-32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/icons/icon-16.png">
+  <link rel="apple-touch-icon" href="/icons/icon-192.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Source+Sans+3:wght@400;500&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/base.css">
+  <link rel="stylesheet" href="/css/layout.css">
+  <link rel="stylesheet" href="/css/print.css" media="print">
+  <link rel="stylesheet" href="/css/view-transitions.css">
+  <link rel="stylesheet" href="/css/catalogue.css">
+  <link rel="stylesheet" href="/css/recipe.css">
+  <link rel="manifest" href="/manifest.webmanifest">
+</head>
+<body>
+  <main class="container">
+    {{ content | safe }}
+  </main>
+  {% if scripts %}{% for script in scripts %}
+  <script src="{{ script }}"></script>
+  {% endfor %}{% endif %}
+  <script>
+    if ("serviceWorker" in navigator) {
+      if (/localhost|127\.0\.0\.1/.test(location.hostname)) {
+        navigator.serviceWorker.getRegistrations().then(function(regs) {
+          regs.forEach(function(r) { r.unregister(); });
+        });
+      } else {
+        navigator.serviceWorker.register("/sw.js");
+      }
+    }
+  </script>
+</body>
+</html>

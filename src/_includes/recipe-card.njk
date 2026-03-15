@@ -1,0 +1,29 @@
+<article class="recipe-card" style="animation-delay: {{ (loop.index0 * 50) }}ms">
+  <a href="/recipes/{{ recipe.data.title | slug }}/" class="recipe-card__link">
+    <div class="recipe-card__image-wrap">
+      {% if recipe.data.image %}
+      <img
+        src="/images/{{ recipe.data.image }}"
+        alt="{{ recipe.data.title }}"
+        class="recipe-card__image"
+        loading="lazy"
+      >
+      {% else %}
+      <div class="recipe-card__placeholder">⋄</div>
+      {% endif %}
+    </div>
+    <div class="recipe-card__body">
+      <h2 class="recipe-card__title">{{ recipe.data.title }}</h2>
+      {% if recipe.data.prep_time or recipe.data.cook_time or recipe.data.servings or recipe.data.categories %}
+      <p class="recipe-card__meta">
+        {% if recipe.data.prep_time %}<span>{{ recipe.data.prep_time }} prep</span>{% endif %}
+        {% if recipe.data.cook_time %}<span>{{ recipe.data.cook_time }} cook</span>{% endif %}
+        {% if recipe.data.servings %}<span>{{ recipe.data.servings }} servings</span>{% endif %}
+        {% if recipe.data.categories and recipe.data.categories.length %}
+        <span>{{ recipe.data.categories | join(", ") }}</span>
+        {% endif %}
+      </p>
+      {% endif %}
+    </div>
+  </a>
+</article>
