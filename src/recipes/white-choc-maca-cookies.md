@@ -1,10 +1,10 @@
 ---
 title: White Chocolate Macadamia Nut Cookies
+image:file_0000000015c872438b9441e2cb2eddbe.png
 prep_time: 2 hours, 15 minutes
 cook_time: 12 minutes
 servings: 30 cookies
 categories: [cookies, dessert, baking]
-image: file_0000000015c872438b9441e2cb2eddbe.png
 source: Sally's Baking Addiction
 source_url: https://sallysbakingaddiction.com/super-chunk-white-chocolate-macadamia-nut-cookies/
 ---
