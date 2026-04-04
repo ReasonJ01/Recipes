@@ -1,6 +1,6 @@
 ---
 title: White Chocolate Macadamia Nut Cookies
-image:file_0000000015c872438b9441e2cb2eddbe.png
+image: file_0000000015c872438b9441e2cb2eddbe.png
 prep_time: 2 hours, 15 minutes
 cook_time: 12 minutes
 servings: 30 cookies
