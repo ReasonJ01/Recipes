@@ -22,10 +22,10 @@ categories: [dessert, baking]
 ## Instructions
 1. Preheat oven to 170°C.
 2. Brown the 200g butter, then take off the heat.
-3. Stir in the 30g cocoa powder.
-4. Add the 200g 50–70% chocolate for melting.
-5. Add the 170g brown sugar, vanilla extract, salt, and instant coffee.
-6. Add the 2 eggs and whisk thoroughly.
+3. Stir in the 30g cocoa powder, then add the 200g 50–70% chocolate for melting.
+4. In a separate bowl, vigorously whisk together the 170g brown sugar and 2 eggs.
+5. Slowly stream in the cooled butter-chocolate mixture while whisking.
+6. Whisk in vanilla extract, instant coffee, and a pinch of salt.
 7. Fold in the 70g plain flour until there are just thin streaks of flour.
 8. Fold in the 200g chocolate chunks.
 9. Bake for 26–32 minutes.
