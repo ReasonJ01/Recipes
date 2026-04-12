@@ -1,6 +1,6 @@
 ---
 title: Mini Lemon Meringue Tarts
-image: mini-lemon-meringue-tarts.png
+image: file_0000000086bc722f944d456005222b03.png
 prep_time: 1 hour 45 minutes
 cook_time: 45 minutes
 servings: 8 (4-inch) tarts
