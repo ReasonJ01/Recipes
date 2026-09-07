@@ -16,7 +16,7 @@ function setup(fetch) {
     caches: {
       match: async (request) => entries.get(request.url),
       open: async () => cache,
-      keys: async () => ["recipe-catalogue-v1", "recipe-catalogue-v2", "recipe-catalogue-v3", "unrelated-cache"],
+      keys: async () => ["recipe-catalogue-v1", "recipe-catalogue-v2", "recipe-catalogue-v3", "recipe-catalogue-v4", "unrelated-cache"],
       delete: async (key) => deleted.push(key),
     },
   });
@@ -58,7 +58,7 @@ test("activation only removes old recipe caches", async () => {
   let pending;
   app.handlers.activate({ waitUntil: (promise) => { pending = promise; } });
   await pending;
-  assert.deepEqual(app.deleted, ["recipe-catalogue-v1", "recipe-catalogue-v2"]);
+  assert.deepEqual(app.deleted, ["recipe-catalogue-v1", "recipe-catalogue-v2", "recipe-catalogue-v3"]);
 });
 
 test("external requests are left to the browser", async () => {
