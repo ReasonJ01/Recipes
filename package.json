@@ -3,12 +3,16 @@
   "version": "1.0.0",
   "description": "A static recipe catalogue site",
   "scripts": {
-    "prebuild": "node scripts/generate-icons.js",
+    "validate": "node scripts/validate-recipes.js",
+    "test": "node --test",
+    "check": "npm test && npm run build",
+    "prebuild": "npm run validate && node scripts/generate-icons.js",
     "build": "eleventy",
     "serve": "eleventy --serve"
   },
   "devDependencies": {
     "@11ty/eleventy": "^3.0.0",
+    "js-yaml": "^4.3.2",
     "markdown-it": "^14.0.0",
     "pngjs": "^7.0.0"
   }
