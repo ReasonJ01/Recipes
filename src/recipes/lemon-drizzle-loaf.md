@@ -19,7 +19,7 @@ title: "Lemon Drizzle Loaf with Crunchy Sugar Crust & Caramelised Lemon"
 - Candied caramelised lemons: 10–15 g caster or granulated sugar, for caramelising
 
 ## Instructions
-1. Start the lemon slices first. Slice the small lemon into rounds about 3 mm thick, remove the seeds, and select 4–6 good central slices.
+1. Start the lemon slices first. Slice the small lemon into rounds about 3 mm thick, remove the seeds, and select the slices you want to use for decoration.
 2. Put 100 g caster sugar and 100 ml water into a wide pan and bring to the boil. Add the lemon slices, reduce to a steady gentle simmer, and cook for 10–15 minutes, until the flesh and white pith look translucent.
 3. Transfer the lemon slices to a wire rack to drain and dry.
 4. Heat the oven to 180°C conventional / 160°C fan.
@@ -35,10 +35,10 @@ title: "Lemon Drizzle Loaf with Crunchy Sugar Crust & Caramelised Lemon"
 14. Give the drizzle another very brief stir and spoon it over the hot cake. Finish with visible sugar sitting on top and do not smooth it. Keep as much drizzle as possible off the sides so the demerara exterior remains crisp.
 15. Leave the cake for about 8–10 minutes, loosen the edges, turn it out, and cool completely on a rack.
 16. Check the candied lemon slices. They should be translucent, flexible, no longer dripping, and tacky rather than soaking wet.
-17. Put the best 3–4 slices on a plate and sprinkle one side lightly with 10–15 g caster or granulated sugar.
+17. Put the candied lemon slices on a plate and sprinkle one side lightly with 10–15 g caster or granulated sugar.
 18. Heat a good non-stick frying pan over medium to medium-high heat. Put the lemon slices in sugared-side down and cook until deeply caramelised, with deep amber or dark caramel patches.
 19. Transfer the slices to baking parchment or a silicone mat and leave to cool.
-20. Once both the loaf and lemon slices are completely cool, arrange 2–3 caramelised lemon slices along the central crack.
+20. Once both the loaf and lemon slices are completely cool, arrange the caramelised lemon slices along the central crack.
 
 ## Notes
 - Keep the leftover syrup from candying the lemons to make homemade lemonade.
