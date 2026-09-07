@@ -13,6 +13,7 @@ source_url: https://www.jamieoliver.com/recipes/fruit/best-ever-fruit-crumble/
 - Fruit: ¼ tsp ground cinnamon
 - Fruit: 1 tbsp lime juice
 - Fruit: A few fine scrapes of lemon zest
+- Fruit: Vanilla (see Notes)
 - Fruit: 10–15 g butter
 - Crumble: 225 g plain flour
 - Crumble: 45 g caster sugar
@@ -29,7 +30,7 @@ source_url: https://www.jamieoliver.com/recipes/fruit/best-ever-fruit-crumble/
 4. Continue cooking gently until the pears are just fork-tender but still holding their shape.
 5. Remove the pears with a slotted spoon and transfer them to the baking dish.
 6. Keep the remaining pear syrup on the heat and reduce it until it is glossy and thick enough to coat the back of a spoon and leave a clean trail when you run a finger through it.
-7. Take the syrup off the heat. Stir in a few fine scrapes of lemon zest and 10–15 g butter until glossy.
+7. Take the syrup off the heat. Stir in a few fine scrapes of lemon zest, the vanilla and 10–15 g butter until glossy.
 8. Drizzle just enough of the reduced pear syrup over the pears to lightly coat them. Reserve the remainder for serving.
 9. Make the crumble by rubbing the 225 g flour, 45 g caster sugar, 45 g demerara sugar, pinch of salt, 1 tsp ground ginger and 115 g cold butter together with your fingertips. Keep a mixture of fine crumbs, small lumps and some deliberately larger pieces.
 10. Cover the pears with the crumble mixture.
@@ -37,3 +38,6 @@ source_url: https://www.jamieoliver.com/recipes/fruit/best-ever-fruit-crumble/
 12. Bake at 200°C conventional / 180°C fan until the crumble is well browned and the larger pieces are becoming deeply golden, approximately 25–30 minutes.
 13. Allow to stand for 5–10 minutes before serving.
 14. Serve with the reserved pear caramel.
+
+## Notes
+- I accidentally added about ½ tbsp vanilla to the caramel. It tasted nice, but was probably too much; try less next time.
