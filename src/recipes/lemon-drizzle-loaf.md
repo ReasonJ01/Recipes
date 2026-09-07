@@ -39,6 +39,4 @@ title: "Lemon Drizzle Loaf with Crunchy Sugar Crust & Caramelised Lemon"
 18. Arrange 2–3 caramelised lemon slices on the cooled loaf.
 
 ## Notes
-- You will want 2–3 lemons total.
-- Use granulated sugar for the drizzle to give a coarser crunchy crust.
-- Use the loaf tin without parchment.
+- Keep the leftover lemon-candying syrup to make homemade lemonade.
