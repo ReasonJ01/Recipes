@@ -5,7 +5,7 @@ const STATIC_ASSETS = [
   "/css/base.css?v=4",
   "/css/layout.css?v=4",
   "/css/catalogue.css?v=4",
-  "/css/recipe.css?v=4",
+  "/css/recipe.css?v=5",
   "/css/print.css?v=4",
   "/manifest.webmanifest",
   "/css/view-transitions.css?v=4",
