@@ -1,6 +1,7 @@
 const fs = require("fs");
 const path = require("path");
 const markdownIt = require("markdown-it");
+const { parseRecipe } = require("./scripts/recipe-format");
 
 const md = new markdownIt();
 
@@ -29,27 +30,7 @@ module.exports = function (eleventyConfig) {
     if (!inputPath) return {};
     const fullPath = path.join(process.cwd(), inputPath);
     if (!fs.existsSync(fullPath)) return {};
-    let content = fs.readFileSync(fullPath, "utf8");
-    content = content.replace(/^---\n[\s\S]*?---\n/, "");
-    const sections = {};
-    const sectionRegex = /^## (Ingredients|Instructions|Notes)\s*$/gm;
-    let lastIndex = 0;
-    let match;
-    let currentSection = null;
-
-    while ((match = sectionRegex.exec(content)) !== null) {
-      if (currentSection) {
-        sections[currentSection] = content
-          .slice(lastIndex, match.index)
-          .trim();
-      }
-      currentSection = match[1];
-      lastIndex = match.index + match[0].length;
-    }
-    if (currentSection) {
-      sections[currentSection] = content.slice(lastIndex).trim();
-    }
-    return sections;
+    return parseRecipe(fs.readFileSync(fullPath, "utf8")).sections;
   });
 
   eleventyConfig.addFilter("ingredientsToList", function (text) {
