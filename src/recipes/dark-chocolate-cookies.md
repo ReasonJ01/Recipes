@@ -1,5 +1,6 @@
 ---
 title: Dark Chocolate Cookies with White and Dark Chocolate Chunks
+image: file_0000000095108210b9846282349789ab.png
 cook_time: 12–15 min
 categories: [cookies, dessert, baking]
 ---

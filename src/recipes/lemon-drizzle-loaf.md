@@ -1,5 +1,6 @@
 ---
 title: "Lemon Drizzle Loaf with Crunchy Sugar Crust & Caramelised Lemon"
+image: file_000000003fe48210b2b06509a7a7bb28.png
 ---
 
 ## Ingredients
