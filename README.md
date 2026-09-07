@@ -1,6 +1,6 @@
-# Recipe Catalogue
+# Recipe Notebook
 
-A static recipe site that presents your recipes like an art gallery catalogue—beautiful typography, cohesive colours, and fluid interactions.
+A personal recipe notebook at https://recipes.reason.place/, using Cormorant Garamond, Source Serif 4, and Source Sans 3. Recipes are reading pages with grouped ingredients, a numbered method, and kitchen notes. The layout stacks on mobile and uses two columns on wider screens. Timers and ingredient checkboxes have been removed.
 
 ## Quick Start
 
@@ -53,7 +53,7 @@ source_url: https://...       # optional - link when source is set
 3. Add images to `public/images/` and reference via the `image` field
 4. Run `npm run build`
 
-Only `title`, `## Ingredients`, and `## Instructions` are required. Use one ingredient or numbered step per line; do not wrap steps onto multiple lines or add subheadings. Put component names at the start of ingredient lines. Ingredients and Instructions display plain text; Notes supports Markdown. Quote YAML values containing punctuation such as a colon. Image paths are relative to `public/images/`.
+Only `title`, `## Ingredients`, and `## Instructions` are required. Use one ingredient or numbered step per line; do not wrap steps onto multiple lines or add subheadings. Put component names at the start of ingredient lines, such as `- Fruit: 650 g pears`; consecutive matching labels become ingredient group headings. Ingredients and Instructions display plain text; Notes supports Markdown. Quote YAML values containing punctuation such as a colon. Image paths are relative to `public/images/`.
 
 The catalogue updates automatically from the recipe files. Published URLs come from the recipe title, so changing an existing title also changes its URL.
 

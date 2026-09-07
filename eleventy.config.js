@@ -8,7 +8,6 @@ const md = new markdownIt();
 module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "public/css": "css" });
   eleventyConfig.addPassthroughCopy({ "public/images": "images" });
-  eleventyConfig.addPassthroughCopy({ "public/js": "js" });
   eleventyConfig.addPassthroughCopy({ "public/icons": "icons" });
   eleventyConfig.addPassthroughCopy({ "public/manifest.webmanifest": "manifest.webmanifest" });
   eleventyConfig.addPassthroughCopy({ "public/sw.js": "sw.js" });
@@ -33,12 +32,20 @@ module.exports = function (eleventyConfig) {
     return parseRecipe(fs.readFileSync(fullPath, "utf8")).sections;
   });
 
-  eleventyConfig.addFilter("ingredientsToList", function (text) {
+  eleventyConfig.addFilter("ingredientGroups", function (text) {
     if (!text) return [];
-    return text
-      .split(/\n/)
-      .map((line) => line.replace(/^[-*]\s*/, "").trim())
-      .filter(Boolean);
+    const groups = [];
+    const lines = text.split(/\n/).map((line) => line.replace(/^[-*]\s*/, "").trim()).filter(Boolean);
+    for (const line of lines) {
+      const component = line.match(/^([A-Za-z][A-Za-z &-]*):\s+(.+)$/);
+      const title = component ? component[1] : "";
+      const item = component ? component[2] : line;
+      if (!groups.length || groups[groups.length - 1].title !== title) {
+        groups.push({ title, items: [] });
+      }
+      groups[groups.length - 1].items.push(item);
+    }
+    return groups;
   });
 
   eleventyConfig.addFilter("instructionsToList", function (text) {
@@ -47,16 +54,6 @@ module.exports = function (eleventyConfig) {
       .split(/\n/)
       .map((line) => line.replace(/^\d+\.\s*/, "").trim())
       .filter(Boolean);
-  });
-
-  eleventyConfig.addFilter("extractMinutes", function (text) {
-    if (!text || typeof text !== "string") return null;
-    const match = text.match(/(\d+)\s*[-–—]\s*(\d+)\s*(?:min|minute)/i) ||
-      text.match(/(\d+)\s*(?:min|minute)/i);
-    if (match) {
-      return match[2] ? Math.max(parseInt(match[1], 10), parseInt(match[2], 10)) : parseInt(match[1], 10);
-    }
-    return null;
   });
 
   return {

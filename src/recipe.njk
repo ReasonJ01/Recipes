@@ -5,97 +5,65 @@ pagination:
   size: 1
   alias: recipe
 permalink: "/recipes/{{ recipe.data.title | slug }}/"
-scripts:
-  - /js/ingredients.js
-  - /js/scroll-reveal.js
-  - /js/timer.js
 ---
 
-<a href="/" class="recipe-back" aria-label="Back to catalogue">
-  <svg class="recipe-back__icon" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-    <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/>
-    <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/>
-    <path d="M8 7h8"/>
-  </svg>
-</a>
-
 {% set sections = recipe.inputPath | parseRecipeSections %}
-{% set ingredients = sections.Ingredients | ingredientsToList %}
+{% set groups = sections.Ingredients | ingredientGroups %}
 {% set instructions = sections.Instructions | instructionsToList %}
 
-<div class="recipe-hero">
-  {% if recipe.data.image %}
-  <div class="recipe-hero__image-wrap">
-    <img
-      src="/images/{{ recipe.data.image }}"
-      alt="{{ recipe.data.title }}"
-      class="recipe-hero__image"
-    >
-  </div>
-  {% endif %}
-  <header class="recipe-header">
-    <h1 class="recipe-title">{{ recipe.data.title }}</h1>
-    {% if recipe.data.prep_time or recipe.data.cook_time or recipe.data.servings or recipe.data.categories %}
-    <div class="recipe-meta">
-      {% if recipe.data.prep_time %}<span class="recipe-meta__badge">{{ recipe.data.prep_time }} prep</span>{% endif %}
-      {% if recipe.data.cook_time %}<span class="recipe-meta__badge">{{ recipe.data.cook_time }} cook</span>{% endif %}
-      {% if recipe.data.servings %}<span class="recipe-meta__badge">{{ recipe.data.servings }} servings</span>{% endif %}
+<article class="recipe">
+  <header class="recipe-header{% if recipe.data.image %} recipe-header--illustrated{% endif %}">
+    <div class="recipe-header__text">
       {% if recipe.data.categories and recipe.data.categories.length %}
-      {% for cat in recipe.data.categories %}
-      <span class="recipe-meta__badge">{{ cat }}</span>
-      {% endfor %}
+      <p class="recipe-categories">{{ recipe.data.categories | join(" · ") }}</p>
+      {% endif %}
+      <h1 class="recipe-title">{{ recipe.data.title }}</h1>
+      {% if recipe.data.prep_time or recipe.data.cook_time or recipe.data.servings %}
+      <dl class="recipe-meta">
+        {% if recipe.data.prep_time %}<div><dt>Prep</dt><dd>{{ recipe.data.prep_time }}</dd></div>{% endif %}
+        {% if recipe.data.cook_time %}<div><dt>Cook</dt><dd>{{ recipe.data.cook_time }}</dd></div>{% endif %}
+        {% if recipe.data.servings %}<div><dt>Yield</dt><dd>{{ recipe.data.servings }}</dd></div>{% endif %}
+      </dl>
+      {% endif %}
+      {% if recipe.data.source %}
+      <p class="recipe-source">Adapted from {% if recipe.data.source_url %}<a href="{{ recipe.data.source_url }}" target="_blank" rel="noopener noreferrer">{{ recipe.data.source }}</a>{% else %}{{ recipe.data.source }}{% endif %}</p>
       {% endif %}
     </div>
-    {% endif %}
-    {% if recipe.data.source %}
-    <p class="recipe-source">
-      Adapted from {% if recipe.data.source_url %}<a href="{{ recipe.data.source_url }}" target="_blank" rel="noopener noreferrer">{{ recipe.data.source }}</a>{% else %}{{ recipe.data.source }}{% endif %}
-    </p>
+    {% if recipe.data.image %}
+    <figure class="recipe-image">
+      <img src="/images/{{ recipe.data.image }}" alt="{{ recipe.data.title }}" width="800" height="800" fetchpriority="high">
+    </figure>
     {% endif %}
   </header>
-</div>
 
-<div class="recipe-body">
-  {% if ingredients.length %}
-  <section class="recipe-section recipe-section--ingredients">
-    <h2 class="recipe-section__title">Ingredients</h2>
-    <ul class="recipe-ingredients">
-      {% for item in ingredients %}
-      <li>
-        <input type="checkbox" class="recipe-ingredients__checkbox" id="ing-{{ loop.index }}">
-        <span class="recipe-ingredients__text" data-checkbox-target="ing-{{ loop.index }}">{{ item }}</span>
-      </li>
+  <div class="recipe-body">
+    <section class="recipe-section recipe-section--ingredients" aria-labelledby="ingredients-title">
+      <h2 id="ingredients-title" class="recipe-section__title">Ingredients</h2>
+      {% for group in groups %}
+      <div class="ingredient-group">
+        {% if group.title %}<h3 class="ingredient-group__title">{{ group.title }}</h3>{% endif %}
+        <ul class="recipe-ingredients">
+          {% for item in group.items %}<li><span class="recipe-ingredients__text">{{ item }}</span></li>{% endfor %}
+        </ul>
+      </div>
       {% endfor %}
-    </ul>
-  </section>
-  {% endif %}
+    </section>
 
-  {% if instructions.length %}
-  <section class="recipe-section recipe-section--instructions">
-    <h2 class="recipe-section__title">Instructions</h2>
-    <ol class="recipe-instructions">
-      {% for item in instructions %}
-      <li {% if item | extractMinutes %}data-timer-minutes="{{ item | extractMinutes }}"{% endif %}>
-        <span class="recipe-instructions__number"></span>
-        <span class="recipe-instructions__text">{{ item }}</span>
-        {% if item | extractMinutes %}
-        <button type="button" class="recipe-timer" data-minutes="{{ item | extractMinutes }}" aria-label="Start {{ item | extractMinutes }} minute timer">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-          <span class="recipe-timer__label">{{ item | extractMinutes }} min</span>
-        </button>
-        {% endif %}
-      </li>
-      {% endfor %}
-    </ol>
-  </section>
-  {% endif %}
-
-  {% if sections.Notes %}
-  <section class="recipe-section recipe-section--notes">
-    <h2 class="recipe-section__title">Notes</h2>
-    <div class="recipe-notes">
-      {{ sections.Notes | markdown | safe }}
+    <div class="recipe-method">
+      <section class="recipe-section recipe-section--instructions" aria-labelledby="method-title">
+        <h2 id="method-title" class="recipe-section__title">Method</h2>
+        <ol class="recipe-instructions">
+          {% for item in instructions %}
+          <li><span class="recipe-instructions__text">{{ item }}</span></li>
+          {% endfor %}
+        </ol>
+      </section>
+      {% if sections.Notes %}
+      <aside class="recipe-notes" aria-labelledby="notes-title">
+        <h2 id="notes-title" class="recipe-section__title">Kitchen notes</h2>
+        {{ sections.Notes | markdown | safe }}
+      </aside>
+      {% endif %}
     </div>
-  </section>
-  {% endif %}
-</div>
+  </div>
+</article>

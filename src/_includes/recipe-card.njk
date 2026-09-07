@@ -1,29 +1,19 @@
-<article class="recipe-card" style="animation-delay: {{ (loop.index0 * 50) }}ms">
+<article class="recipe-card{% if recipe.data.image %} recipe-card--illustrated{% endif %}">
   <a href="/recipes/{{ recipe.data.title | slug }}/" class="recipe-card__link">
-    <div class="recipe-card__image-wrap">
-      {% if recipe.data.image %}
-      <img
-        src="/images/{{ recipe.data.image }}"
-        alt="{{ recipe.data.title }}"
-        class="recipe-card__image"
-        loading="lazy"
-      >
-      {% else %}
-      <div class="recipe-card__placeholder">⋄</div>
-      {% endif %}
-    </div>
     <div class="recipe-card__body">
+      <span class="recipe-card__number" aria-hidden="true">{% if loop.index < 10 %}0{% endif %}{{ loop.index }}</span>
       <h2 class="recipe-card__title">{{ recipe.data.title }}</h2>
-      {% if recipe.data.prep_time or recipe.data.cook_time or recipe.data.servings or recipe.data.categories %}
-      <p class="recipe-card__meta">
-        {% if recipe.data.prep_time %}<span>{{ recipe.data.prep_time }} prep</span>{% endif %}
-        {% if recipe.data.cook_time %}<span>{{ recipe.data.cook_time }} cook</span>{% endif %}
-        {% if recipe.data.servings %}<span>{{ recipe.data.servings }} servings</span>{% endif %}
-        {% if recipe.data.categories and recipe.data.categories.length %}
-        <span>{{ recipe.data.categories | join(", ") }}</span>
-        {% endif %}
-      </p>
+      {% if recipe.data.categories and recipe.data.categories.length %}
+      <p class="recipe-card__categories">{{ recipe.data.categories | join(" · ") }}</p>
+      {% endif %}
+      {% if recipe.data.prep_time or recipe.data.cook_time %}
+      <p class="recipe-card__meta">{% if recipe.data.prep_time %}<span>{{ recipe.data.prep_time }} prep</span>{% endif %}{% if recipe.data.cook_time %}<span>{{ recipe.data.cook_time }} cook</span>{% endif %}</p>
       {% endif %}
     </div>
+    {% if recipe.data.image %}
+    <div class="recipe-card__image-wrap">
+      <img src="/images/{{ recipe.data.image }}" alt="" class="recipe-card__image" loading="lazy" width="320" height="360">
+    </div>
+    {% endif %}
   </a>
 </article>
