@@ -27,3 +27,6 @@ categories: [cookies, dessert, baking]
 5. Add the 100–150 g white chocolate chips and 50 g chopped dark chocolate, then mix until incorporated.
 6. Scoop the dough onto a baking tray.
 7. Bake at 160°C for 12–15 minutes.
+
+## Notes
+- Cookie shape can be adjusted at the creaming step: cream the butter and sugars longer, until light and fluffy, for more aeration and a thicker, puffier cookie; cream them less, just until smooth and combined, for less aeration and a flatter, denser cookie with more spread.
