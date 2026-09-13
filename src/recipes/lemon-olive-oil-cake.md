@@ -1,5 +1,6 @@
 ---
 title: Lemon Olive Oil Cake
+image: lemon-olive-oil-cake.jpg
 prep_time: 10 min
 cook_time: 35–40 min
 categories: [dessert, baking, cake, lemon]
