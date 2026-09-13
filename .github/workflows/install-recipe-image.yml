@@ -1,0 +1,26 @@
+name: Install recipe image
+
+on:
+  push:
+    branches: [recipe/pear-pastries]
+    paths: [.image-upload/complete]
+
+permissions:
+  contents: write
+
+jobs:
+  install:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install image and clean helper files
+        run: |
+          mkdir -p public/images
+          cat .image-upload/part* | base64 -d > public/images/pear-pastries.jpg
+          rm -rf .image-upload
+          rm .github/workflows/install-recipe-image.yml
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Add pear pastries image"
+          git push
