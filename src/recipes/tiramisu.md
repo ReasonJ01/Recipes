@@ -1,5 +1,6 @@
 ---
 title: Tiramisu
+image: file_00000000953c820a8055786e5c3a32f8.png
 categories: [dessert, italian]
 ---
 
