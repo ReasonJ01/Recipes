@@ -1,5 +1,6 @@
 ---
 title: Focaccia
+image: focaccia.jpg
 prep_time: 25 min
 cook_time: 15–18 min
 categories: [bread, baking, focaccia]
