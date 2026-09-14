@@ -1,5 +1,6 @@
 ---
 title: Pear Pastries
+image: file_000000003bcc824694ff35e4b86578bb.png
 cook_time: 15 min
 categories: [dessert, baking, pastry]
 ---
